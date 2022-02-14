@@ -204,8 +204,12 @@ class Git
 		];
 	}
 
-	public function push()
+	public function push(bool $rebase)
 	{
+		if ($rebase) {
+            		return $this->exec("pull {$this->remote} {$this->branchMerge} --rebase");
+        	}
+		
 		return $this->exec("push {$this->remote} {$this->branchCurrent}");
 	}
 
