@@ -42,7 +42,10 @@ return [
 		'pattern' => 'git/push',
 		'method' => 'post',
 		'action' => function () {
-			return (new Git())->push();
+			$git = new Git();
+            		$git->pull();
+
+			return $git->push();
 		}
 	],
 	[
